@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Jaja! 💖</title>
+    <!-- Google Font: Fredoka untuk tampilan yang Cute & Modern -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==================================================
+           VARIABEL WARNA & TEMA (NEO BRUTALISM PASTEL)
+        ================================================== */
+        :root {
+            /* Warna Pastel */
+            --pink: #FF99C8;
+            --cream: #FCF6BD;
+            --yellow: #E2F0CB;
+            --white: #FFFFFF;
+            --peach: #FFC09F;
+            --blue: #A9DEF9;
+            --black: #1A1A1A;
+            
+            /* Neo Brutalism Styles */
+            --border: 6px solid var(--black);
+            --shadow: 8px 8px 0px var(--black);
+            --shadow-hover: 14px 14px 0px var(--black);
+            --radius: 24px;
+        }
+
+        /* ==================================================
+           RESET & GLOBAL STYLES
+        ================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--cream);
+            /* Dot Grid Background untuk estetika modern */
+            background-image: radial-gradient(var(--black) 2px, transparent 2px);
+            background-size: 40px 40px;
+            color: var(--black);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 14px; }
+        ::-webkit-scrollbar-track { background: var(--cream); border-left: 4px solid var(--black); }
+        ::-webkit-scrollbar-thumb { background: var(--pink); border: 3px solid var(--black); border-radius: 10px; }
+
+        /* ==================================================
+           KOMPONEN NEO BRUTALISM
+        ================================================== */
+        .neo-box {
+            background: var(--white);
+            border: var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* Glass Glow Ringan */
+        .glass-glow {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Tombol Utama */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--pink);
+            color: var(--black);
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 16px 48px;
+            border: var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+            position: relative;
+            overflow: hidden;
+            outline: none;
+        }
+
+        .btn:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: var(--shadow-hover);
+            background: var(--peach);
+        }
+
+        .btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 4px 4px 0px var(--black);
+        }
+
+        /* Efek Ripple pada Tombol */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple-anim 0.6s linear;
+            pointer-events: none;
+        }
+        @keyframes ripple-anim {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        /* ==================================================
+           LAYOUT & SECTION
+        ================================================== */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            padding: 12px 32px;
+            background: var(--white);
+            margin-bottom: 50px;
+            text-align: center;
+            transform: rotate(-2deg);
+        }
+
+        /* ==================================================
+           HERO SECTION
+        ================================================== */
+        .hero-section {
+            text-align: center;
+        }
+
+        .hero-content {
+            padding: 50px 30px;
+            max-width: 800px;
+            background: var(--white);
+            animation: float 6s infinite ease-in-out alternate;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--black);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0px var(--pink);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        /* ==================================================
+           GALLERY SECTION
+        ================================================== */
+        .gallery-grid {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .photo-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background: var(--white);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .photo-card.float-1 {
+            transform: rotate(-3deg);
+            animation: floatSlow 7s infinite ease-in-out alternate;
+        }
+        
+        .photo-card.float-2 {
+            transform: rotate(4deg);
+            animation: floatSlow 8s infinite ease-in-out alternate-reverse;
+            background: var(--pink);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 4px solid var(--black);
+            display: block;
+        }
+
+        .photo-card:hover {
+            transform: scale(1.08) rotate(0deg) translateY(-10px) !important;
+            box-shadow: 16px 16px 0px var(--black);
+            z-index: 10;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                flex-direction: column;
+            }
+        }
+
+        /* ==================================================
+           LOVE LETTER SECTION
+        ================================================== */
+        .letter-container {
+            max-width: 700px;
+            width: 100%;
+            background: var(--yellow);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .mailbox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .mailbox h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .letter-content {
+            display: none;
+            margin-top: 30px;
+            padding: 30px;
+            background: var(--white);
+            border: 4px solid var(--black);
+            border-radius: 16px;
+            text-align: left;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            box-shadow: inset 4px 4px 0px rgba(0,0,0,0.05);
+        }
+
+        .typewriter-cursor {
+            display: inline-block;
+            width: 4px;
+            height: 1.2em;
+            background-color: var(--black);
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ==================================================
+           TIMELINE SECTION
+        ================================================== */
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .timeline-card {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 24px;
+            background: var(--white);
+        }
+        
+        .timeline-card:nth-child(1) { background: var(--peach); transform: rotate(-1deg); }
+        .timeline-card:nth-child(2) { background: var(--blue); flex-direction: row-reverse; text-align: right; transform: rotate(1deg); }
+        .timeline-card:nth-child(3) { background: var(--pink); transform: rotate(-1.5deg); }
+        .timeline-card:nth-child(4) { background: var(--yellow); flex-direction: row-reverse; text-align: right; transform: rotate(1.5deg); }
+
+        .timeline-icon {
+            width: 80px;
+            height: 80px;
+            font-size: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            border-radius: 50%;
+            border: 4px solid var(--black);
+            box-shadow: 4px 4px 0px var(--black);
+            flex-shrink: 0;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .timeline-card:hover .timeline-icon {
+            transform: scale(1.15) rotate(10deg);
+        }
+
+        .timeline-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+        .timeline-text p {
+            font-size: 1.2rem;
+            color: #222;
+        }
+
+        @media (max-width: 600px) {
+            .timeline-card, .timeline-card:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ==================================================
+           LOVE COUNTER SECTION
+        ================================================== */
+        .counter-box {
+            text-align: center;
+            padding: 40px;
+            background: var(--white);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .counter-box h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .time-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .time-box {
+            background: var(--peach);
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .time-box:nth-child(2) { background: var(--pink); }
+        .time-box:nth-child(3) { background: var(--yellow); }
+        .time-box:nth-child(4) { background: var(--blue); }
+
+        .time-box span {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .time-box small {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .time-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ==================================================
+           FOOTER
+        ================================================== */
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            background: var(--black);
+            color: var(--white);
+            border-top: var(--border);
+            position: relative;
+            z-index: 10;
+        }
+
+        footer h2 {
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .heart-beat {
+            display: inline-block;
+            color: var(--pink);
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.3); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.3); }
+            60% { transform: scale(1); }
+        }
+
+        /* ==================================================
+           ANIMASI & EFEK
+        ================================================== */
+        
+        /* Float Normal (Hero) */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* Float Lambat (Gallery) */
+        @keyframes floatSlow {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Reveal on Scroll (Fade & Slide) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Popup Toast */
+        .toast {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            padding: 16px 32px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            z-index: 9999;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        .toast.show {
+            bottom: 40px;
+            opacity: 1;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            top: -20px;
+            width: 16px;
+            height: 16px;
+            border: 3px solid var(--black);
+            z-index: 9998;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(720deg); }
+        }
+
+        /* Mouse Trail Heart */
+        .trail-heart {
+            position: absolute;
+            font-size: 24px;
+            pointer-events: none;
+            z-index: 9997;
+            animation: fadeUp 1s ease-out forwards;
+            text-shadow: 2px 2px 0px var(--black);
+        }
+        @keyframes fadeUp {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-50px) scale(1.5); }
+        }
+
+        /* Background Shapes (Hati & Abstrak) */
+        .bg-shapes {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bg-shape {
+            position: absolute;
+            border: var(--border);
+            box-shadow: 6px 6px 0px var(--black);
+            animation: floatBg 10s infinite alternate ease-in-out;
+        }
+        @keyframes floatBg {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(30px, -30px) rotate(20deg); }
+        }
+        
+        /* Abstrak Shape & Hati */
+        .shape-1 { background: var(--pink); width: 100px; height: 100px; border-radius: 50%; top: 15%; left: 10%; }
+        .shape-2 { background: var(--blue); width: 80px; height: 80px; border-radius: 16px; top: 40%; right: 10%; animation-delay: -2s; transform: rotate(15deg); }
+        .shape-3 { background: var(--peach); width: 120px; height: 60px; border-radius: 30px; bottom: 20%; left: 15%; animation-delay: -4s; transform: rotate(-25deg); }
+        .shape-4 { background: var(--white); width: 70px; height: 70px; top: 75%; right: 15%; animation-delay: -1s; display:flex; align-items:center; justify-content:center; font-size: 35px; border-radius: 20px;}
+
+    </style>
+</head>
+<body>
+
+    <!-- ================= AUDIO ================= -->
+    <!-- Ganti 'music.mp3' dengan file musik ulang tahun yang diinginkan -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- ================= BACKGROUND DECORATION ================= -->
+    <div class="bg-shapes">
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        <div class="bg-shape shape-3"></div>
+        <div class="bg-shape shape-4 neo-box">💖</div>
+    </div>
+
+    <!-- ================= HERO ================= -->
+    <section id="hero" class="section hero-section">
+        <div class="hero-content neo-box glass-glow">
+            <h1>❤️ HAPPY BIRTHDAY JAJA ❤️</h1>
+            <p>Setiap detik bersamamu adalah bagian terbaik dalam hidupku. Terima kasih sudah menjadi alasan bahagiaku.</p>
+            <button id="main-btn" class="btn">Klik Aku 💌</button>
+        </div>
+    </section>
+
+    <!-- ================= GALERI ================= -->
+    <section id="gallery" class="section">
+        <h2 class="section-title neo-box reveal">Memori Kita 📸</h2>
+        <div class="gallery-grid">
+            <!-- Foto 1 (Ganti placeholder 'foto1.jpg' dengan fotomu) -->
+            <div class="photo-card float-1 neo-box reveal">
+                <img src="foto1.jpg" alt="Foto Jaja 1">
+            </div>
+            <!-- Foto 2 (Ganti placeholder 'foto2.jpg' dengan fotomu) -->
+            <div class="photo-card float-2 neo-box reveal">
+                <img src="foto2.jpg" alt="Foto Jaja 2">
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= LOVE LETTER ================= -->
+    <section id="love-letter" class="section">
+        <div class="letter-container neo-box reveal">
+            <div class="mailbox">
+                <h2>Surat Untuk Jaja 💌</h2>
+                <button id="open-letter-btn" class="btn">Buka Surat</button>
+            </div>
+            <div class="letter-content" id="letter-content">
+                <p><span id="typewriter-text"></span><span class="typewriter-cursor"></span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TIMELINE ================= -->
+    <section id="timeline" class="section">
+        <h2 class="section-title neo-box reveal">Perjalanan Kita 🚀</h2>
+        <div class="timeline-container">
+            <div class="timeline-card neo-box reveal">
+                <div class="timeline-icon">👀</div>
+                <div class="timeline-text">
+                    <h3>Hari Pertama Kenalan</h3>
+                    <p>Awal dari segalanya. Momen tak terduga yang ternyata membawa warna baru di duniaku.</p>
+                </div>
+            </div>
+            <div class="timeline-card neo-box reveal">
+                <div class="timeline-icon">💬</div>
+                <div class="timeline-text">
+                    <h3>Hari Pertama Chat</h3>
+                    <p>Dari obrolan canggung sampai senyum-senyum sendiri menatap layar HP.</p>
+                </div>
+            </div>
+            <div class="timeline-card neo-box reveal">
+                <div class="timeline-icon">💖</div>
+                <div class="timeline-text">
+                    <h3>Hari Jadian</h3>
+                    <p>Hari di mana hati kita sepakat untuk melangkah bersama sebagai satu.</p>
+                </div>
+            </div>
+            <div class="timeline-card neo-box reveal">
+                <div class="timeline-icon">🎂</div>
+                <div class="timeline-text">
+                    <h3>Hari Ini Ulang Tahun</h3>
+                    <p>Merayakan hari kelahiran orang yang paling spesial. Happy Birthday, sayang!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= LOVE COUNTER ================= -->
+    <section id="counter" class="section">
+        <div class="counter-box neo-box reveal">
+            <h2>Aku sudah mencintaimu selama</h2>
+            <div class="time-grid">
+                <div class="time-box neo-box">
+                    <span id="days">00</span>
+                    <small>Hari</small>
+                </div>
+                <div class="time-box neo-box">
+                    <span id="hours">00</span>
+                    <small>Jam</small>
+                </div>
+                <div class="time-box neo-box">
+                    <span id="minutes">00</span>
+                    <small>Menit</small>
+                </div>
+                <div class="time-box neo-box">
+                    <span id="seconds">00</span>
+                    <small>Detik</small>
+                </div>
+            </div>
+            <div class="heart-beat" style="font-size: 3rem;">❤️</div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="footer">
+        <h2>I Love You Forever, Jaja <span class="heart-beat">❤️</span></h2>
+    </footer>
+
+    <!-- ================= POPUP TOAST ================= -->
+    <div id="toast" class="toast neo-box">
+        Semoga hari ini seindah senyummu ❤️
+    </div>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script>
+        // 1. EFEK RIPPLE PADA TOMBOL
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                let ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                let rect = this.getBoundingClientRect();
+                ripple.style.left = `${e.clientX - rect.left}px`;
+                ripple.style.top = `${e.clientY - rect.top}px`;
+                ripple.style.width = ripple.style.height = `${Math.max(rect.width, rect.height)}px`;
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // 2. SISTEM CONFETTI
+        function throwConfetti() {
+            const colors = ['#FF99C8', '#FCF6BD', '#E2F0CB', '#FFFFFF', '#A9DEF9'];
+            for(let i=0; i<80; i++) {
+                let conf = document.createElement('div');
+                conf.className = 'confetti';
+                // Bentuk acak (kotak atau bulat)
+                conf.style.borderRadius = Math.random() > 0.5 ? '50%' : '0px';
+                conf.style.background = colors[Math.floor(Math.random() * colors.length)];
+                conf.style.left = Math.random() * 100 + 'vw';
+                conf.style.animationDuration = (Math.random() * 2 + 2) + 's'; // 2s - 4s
+                conf.style.animationDelay = Math.random() * 0.5 + 's';
+                document.body.appendChild(conf);
+                
+                // Hapus elemen setelah animasi selesai
+                setTimeout(() => conf.remove(), 5000);
+            }
+        }
+
+        // 3. INTERAKSI TOMBOL HERO (MUSIC, CONFETTI, SCROLL, TOAST)
+        document.getElementById('main-btn').addEventListener('click', () => {
+            // Putar Musik
+            const music = document.getElementById('bg-music');
+            music.play().catch(err => console.log("Auto-play diblokir browser, tidak masalah.", err));
+            
+            // Tembak Confetti
+            throwConfetti();
+            
+            // Munculkan Popup
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 4000);
+            
+            // Scroll Otomatis ke Galeri setelah sedikit jeda
+            setTimeout(() => {
+                document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+            }, 1200);
+        });
+
+        // 4. ANIMASI REVEAL (SCROLL)
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Animasi sekali saja saat di-scroll
+                }
+            });
+        }, revealOptions);
+        
+        reveals.forEach(r => revealObserver.observe(r));
+
+        // 5. EFEK TYPEWRITER (SURAT CINTA)
+        const letterText = "Hai Jaja sayang,\n\nSelamat ulang tahun! 🎉\n\nSemoga di umur yang baru ini, kamu semakin bahagia, sehat selalu, dan semua impian indahmu satu per satu tercapai.\n\nTerima kasih sudah hadir di hidupku dan mewarnai hari-hariku dengan senyumanmu yang manis. Setiap momen bersamamu adalah harta karun yang selalu aku simpan rapi di hati.\n\nAku janji akan selalu ada buat kamu, mendukungmu, dan menggenggam tanganmu di setiap langkah.\n\nI love you more than words can say. Tetaplah jadi Jaja yang ceria dan penyayang ya! ❤️";
+        
+        document.getElementById('open-letter-btn').addEventListener('click', function() {
+            // Sembunyikan tombol
+            this.parentElement.style.display = 'none';
+            // Tampilkan kotak surat
+            const contentBox = document.getElementById('letter-content');
+            contentBox.style.display = 'block';
+            
+            const tw = document.getElementById('typewriter-text');
+            let i = 0;
+            function type() {
+                if(i < letterText.length) {
+                    if(letterText.charAt(i) === '\n') {
+                        tw.innerHTML += '<br>';
+                    } else {
+                        tw.innerHTML += letterText.charAt(i);
+                    }
+                    i++;
+                    
+                    // Variasi kecepatan ketik agar terdengar natural
+                    let speed = Math.random() * 30 + 30;
+                    if(letterText.charAt(i-1) === '.' || letterText.charAt(i-1) === ',' || letterText.charAt(i-1) === '\n') {
+                        speed = 300; // Jeda saat tanda baca
+                    }
+                    setTimeout(type, speed);
+                } else {
+                    // Sembunyikan cursor setelah selesai
+                    document.querySelector('.typewriter-cursor').style.display = 'none';
+                }
+            }
+            // Mulai ngetik setelah jeda sedikit
+            setTimeout(type, 500);
+        });
+
+        // 6. LOVE COUNTER (REALTIME)
+        // FORMAT: YYYY-MM-DDTHH:MM:SS
+        const startDate = new Date("2023-05-20T00:00:00"); // 👈 GANTI TANGGAL JADIAN DI SINI
+        
+        function updateCounter() {
+            const now = new Date();
+            const diff = Math.max(0, now - startDate); // hindari minus jika masa depan
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / 1000 / 60) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+            
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCounter, 1000);
+        updateCounter(); // Panggil pertama kali
+
+        // 7. MOUSE HEART TRAIL
+        let lastHeartTime = 0;
+        document.addEventListener('mousemove', function(e) {
+            const now = Date.now();
+            // Batasi agar tidak terlalu banyak elemen (throttle 100ms)
+            if(now - lastHeartTime > 100) {
+                lastHeartTime = now;
+                let heart = document.createElement('div');
+                heart.className = 'trail-heart';
+                heart.innerHTML = '💖';
+                heart.style.left = (e.pageX - 10) + 'px'; // Sesuaikan posisi kursor
+                heart.style.top = (e.pageY - 10) + 'px';
+                document.body.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 1000); // Hapus setelah 1 detik
+            }
+        });
+
+    </script>
+</body>
+</html>
