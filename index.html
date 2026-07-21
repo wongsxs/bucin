@@ -535,7 +535,7 @@
 
     <!-- ================= AUDIO ================= -->
     <!-- Ganti 'music.mp3' dengan file musik ulang tahun yang diinginkan -->
-    <audio id="bg-music" loop preload="auto">
+    <audio id="bg-Music" loop preload="auto">
         <source src="Music.mp3" type="audio/mpeg">
     </audio>
 
@@ -693,7 +693,7 @@
         // 3. INTERAKSI TOMBOL HERO (MUSIC, CONFETTI, SCROLL, TOAST)
         document.getElementById('main-btn').addEventListener('click', () => {
             // Putar Musik
-            const music = document.getElementById('bg-music');
+            const Music = document.getElementById('bg-Music');
             music.play().catch(err => console.log("Auto-play diblokir browser, tidak masalah.", err));
             
             // Tembak Confetti
